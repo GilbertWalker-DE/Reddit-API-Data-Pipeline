@@ -66,5 +66,72 @@ This project demonstrates a pipeline for extracting, transforming, and loading d
 ## Setup Instructions
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/reddit-api-pipeline.git
+
+```bash
+git clone https://github.com/GilbertWalker-DE/Reddit-API-Data-Pipeline.git
+```
+2.  Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3.  Configure Reddit API credentials:
+
+```bash
+# config.py
+CLIENT_ID = 'your_client_id'
+CLIENT_SECRET = 'your_client_secret'
+USERNAME = 'your_reddit_username'
+PASSWORD = 'your_password'
+USER_AGENT = 'your_user_agent'
+```
+
+4.  Configure AWS resources (S3, Redshift, IAM):
+
+```bash
+# Create S3 buckets
+aws s3 mb s3://reddit-raw-data
+aws s3 mb s3://reddit-processed-data
+
+# Set up Redshift cluster via AWS console or Terraform
+# Ensure IAM permissions allow read/write access
+```
+
+5.  Run ETL scripts:
+
+```bash
+python scripts/extract_reddit_data.py
+python scripts/transform_load.py
+```
+
+6.  Set up dbt models:
+
+```bash
+cd dbt/
+dbt run
+```
+
+7.  Use Airflow for workflow orchestration:
+
+```bash
+export AIRFLOW_HOME=~/airflow
+airflow db init
+airflow webserver -p 8080
+airflow scheduler
+```
+
+8.  Deploy infrastructure with Terraform:
+
+```bash
+cd terraform/
+terraform init
+terraform apply
+```
+
+9.  Connect Power BI to Redshift:
+
+```text
+# Use your Redshift cluster endpoint in Power BI
+# Begin creating dashboards or visualizations (currently in progress)
+```
