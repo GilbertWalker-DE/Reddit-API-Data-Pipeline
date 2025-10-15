@@ -63,6 +63,58 @@ This project demonstrates a pipeline for extracting, transforming, and loading d
 
 ---
 
+## 📊 Data Pipeline Architecture
+
+This diagram illustrates the overall data flow and tool interactions within the Reddit API Data Pipeline.
+
+```mermaid
+flowchart LR
+    A[Reddit API] --> B[Python ETL Scripts]
+    B --> C[AWS S3<br/>(Raw Data Storage)]
+    C --> D[AWS Redshift<br/>(Data Warehouse)]
+    D --> E[dbt<br/>(Data Transformation)]
+    E --> F[Power BI<br/>(Visualization & Reporting)]
+
+    %% Supporting tools
+    B -.-> G[Airflow<br/>(Workflow Orchestration)]
+    C & D -.-> H[Terraform<br/>(Infrastructure as Code)]
+
+    %% Styling
+    classDef aws fill:#fffae6,stroke:#d1b45a,stroke-width:2px;
+    class C,D,H aws;
+    classDef main fill:#e8f5ff,stroke:#007acc,stroke-width:2px;
+    class A,B,E,F,G main;
+
+---
+
+
+## Screenshots & Visuals
+
+### 📈 Project Architecture
+Below is a simplified diagram showing the overall data pipeline flow:
+
+![Pipeline Diagram](images/pipeline_diagram.png)
+
+---
+
+### 🧩 Airflow DAG Example
+Here’s an example of the Airflow DAG orchestrating the ETL process:
+
+![Airflow DAG](images/GraphAirflow.png)
+
+*(Sensitive info such as credentials and connection strings have been removed.)*
+
+---
+
+### 📊 Power BI Visualization (In Progress)
+The dataset is successfully connected to Power BI for future dashboard development.
+
+![Power BI Screenshot](images/powerbi_preview.png)
+
+*(Sample data used for privacy. Dashboard visuals under development.)*
+
+---
+
 ## Setup Instructions
 
 1. Clone the repository:
