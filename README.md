@@ -71,7 +71,7 @@ This diagram illustrates the overall data flow and tool interactions within the 
 flowchart LR
     A[Reddit API] --> B[Python ETL Scripts]
     B --> C[AWS S3 (Raw Data)]
-    C --> D[AWS Redshift (Data Warehouse)]
+    C --> D[AWS Redshift (Warehouse)]
     D --> E[dbt (Transformations)]
     E --> F[Power BI (Visualization)]
 
@@ -84,6 +84,7 @@ flowchart LR
     class C,D,H aws;
     classDef main fill:#e6f2ff,stroke:#007acc,stroke-width:2px;
     class A,B,E,F,G main;
+
 
 ---
 
