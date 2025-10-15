@@ -70,20 +70,14 @@ This diagram illustrates the overall data flow and tool interactions within the 
 ```mermaid
 flowchart LR
     A[Reddit API] --> B[Python ETL Scripts]
-    B --> C[AWS S3 (Raw Data)]
-    C --> D[AWS Redshift (Warehouse)]
-    D --> E[dbt (Transform)]
-    E --> F[Power BI (Visualization)]
+    B --> C[AWS S3 (Raw Data Storage)]
+    C --> D[AWS Redshift (Data Warehouse)]
+    D --> E[dbt (Data Transformation)]
+    E --> F[Power BI (Visualization & Reporting)]
 
     %% Supporting tools
-    B -.-> G[Airflow (Orchestration)]
-    C & D -.-> H[Terraform (Infra)]
-
-    %% Styling
-    classDef aws fill:#fff8dc,stroke:#d4af37,stroke-width:2px;
-    class C,D,H aws;
-    classDef main fill:#e6f2ff,stroke:#007acc,stroke-width:2px;
-    class A,B,E,F,G main;
+    B -.-> G[Airflow (Workflow Orchestration)]
+    C & D -.-> H[Terraform (Infrastructure as Code)]
 
 ---
 
