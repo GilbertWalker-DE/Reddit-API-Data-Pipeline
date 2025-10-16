@@ -1,4 +1,5 @@
-# Reddit API Data Pipeline Project
+# Reddit API Data Pipeline Project  
+🚀 Beginner-to-Pro Journey | Reddit ETL Pipeline with AWS & Power BI
 
 **Status:** ✅ Completed
 
