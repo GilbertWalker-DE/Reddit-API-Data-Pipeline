@@ -6,177 +6,108 @@
 
 ## Overview
 
-This project demonstrates a pipeline for extracting, transforming, and loading data from Reddit using the Reddit API. The dataset is stored in AWS Redshift and connected to Power BI for visualization and analysis.
+This project demonstrates a data pipeline for extracting, transforming, and loading data from Reddit using the Reddit API.  
+The dataset is stored in AWS Redshift and connected to Power BI for visualization and analysis.
 
-> **Note:** This project was inspired by [ABZ-Aaron’s Reddit API Pipeline tutorial](https://github.com/ABZ-Aaron/reddit-api-pipeline/tree/master/instructions). I followed the tutorial to build the pipeline while applying my own understanding and modifications where applicable.
+> **Note:** This project was inspired by [ABZ-Aaron’s Reddit API Pipeline tutorial](https://github.com/ABZ-Aaron/reddit-api-pipeline/tree/master/instructions).  
+> I followed the tutorial to build the pipeline while applying my own understanding and modifications where applicable.
 
 ---
 
 ## Technologies Used
 
-- **Python** (requests, pandas, etc.)
-- **Reddit API** (PRAW)
+- **Python** – data extraction, transformation, and loading (requests, pandas, boto3)
+- **Reddit API (PRAW)** – for accessing Reddit data
 - **AWS Services:**
-  - **S3** – storing raw and processed data
-  - **Redshift** – relational database for analytics
-  - **IAM** – managing access and credentials
-  - **boto3** – Python SDK for AWS integration
-- **dbt** – data transformation
-- **Power BI** – for initial data exploration
-- **Airflow** – for orchestration
-- **Docker** – for containerization
-- **Terraform** – infrastructure as code
+  - **S3** – raw and processed data storage
+  - **Redshift** – data warehouse for analytics
+  - **IAM** – access control and permissions
+- **dbt Cloud** – for online data transformation
+- **Power BI** – visualization and reporting
+- **Airflow (Docker)** – workflow orchestration
+- **Terraform** – infrastructure as code (for reference)
 - **Git/GitHub** – version control
 
 ---
 
 ## Features Implemented
 
-- Authenticated connection to Reddit API
-- Data extraction and transformation for posts and comments
-- Loading data into AWS Redshift
-- Data transformation using dbt
-- Initial connection to Power BI for data exploration
-- Orchestration with Airflow in Docker
-- Infrastructure setup with Terraform
-
-*Note: Power BI visualizations are currently in progress.*
+- Authenticated connection to Reddit API  
+- ETL pipeline built in Python for posts and comments data  
+- Data stored and managed in AWS S3 and Redshift  
+- Data transformation performed in **dbt Cloud**  
+- Visualization setup in **Power BI**  
+- Workflow orchestration using **Airflow** in Docker containers  
+- Infrastructure defined using **Terraform**
 
 ---
 
 ## Challenges & Learnings
 
-- Successfully built the ETL pipeline, handling API authentication, AWS integration, and data storage.
-- Implemented data transformations using dbt, enhancing data quality and consistency.
-- Connected the dataset to Power BI, learning the initial setup process; advanced visualizations are still a work in progress.
-- Gained experience in orchestrating workflows with Airflow and managing infrastructure with Terraform.
+- Configuring authentication with the Reddit API and AWS IAM.  
+- Implementing a reliable ETL flow from extraction to Redshift.  
+- Using dbt Cloud for online data transformations.  
+- Connecting Power BI to Redshift for initial exploration.  
+- Managing Airflow DAGs for automation and scheduling.
 
 ---
 
 ## Next Steps
 
-- Develop interactive dashboards and visualizations in Power BI.
-- Automate ETL updates to Redshift using scheduled scripts.
-- Explore additional data insights and analytics from Reddit posts and comments.
-- Optimize AWS S3/Redshift architecture for efficiency and cost.
-- Enhance Airflow DAGs for better workflow management.
+- Build interactive Power BI dashboards using Redshift data.  
+- Automate ETL pipeline execution using Airflow scheduling.  
+- Expand data scope to include Reddit comments and metadata.  
+- Optimize AWS storage and data warehouse performance.  
+- Continue learning infrastructure automation and CI/CD integration.
 
 ---
 
 ## 📊 Data Pipeline Architecture
 
-This diagram illustrates the overall data flow and tool interactions within the Reddit API Data Pipeline.
-
-```mermaid
-flowchart LR
-    A[Reddit API] --> B[Python ETL Scripts]
-    B --> C[AWS S3 (Raw Data Storage)]
-    C --> D[AWS Redshift (Data Warehouse)]
-    D --> E[dbt (Data Transformation)]
-    E --> F[Power BI (Visualization & Reporting)]
-
-    %% Supporting tools
-    B -.-> G[Airflow (Workflow Orchestration)]
-    C & D -.-> H[Terraform (Infrastructure as Code)]
-
----
-
-## Screenshots & Visuals
-
-### 📈 Project Architecture
 Below is a simplified diagram showing the overall data pipeline flow:
 
 ![Pipeline Diagram](images/pipeline_diagram.png)
 
 ---
 
+## Screenshots & Visuals
+
 ### 🧩 Airflow DAG Example
-Here’s an example of the Airflow DAG orchestrating the ETL process:
+Example DAG orchestrating the ETL process:
 
 ![Airflow DAG](images/GraphAirflow.png)
 
-*(Sensitive info such as credentials and connection strings have been removed.)*
+*(Sensitive information such as credentials has been removed.)*
 
 ---
 
 ### 📊 Power BI Visualization (In Progress)
-The dataset is successfully connected to Power BI for future dashboard development.
 
-![Power BI Screenshot](images/powerbi_preview.png)
+The dataset is connected to Power BI for developing future dashboards.
 
-*(Sample data used for privacy. Dashboard visuals under development.)*
+![Power BI Screenshot](images/powerbi_dashboard.png)
+
+*(Sample data shown for privacy. Visualizations are under development.)*
 
 ---
 
-## Setup Instructions
+## Setup Overview
 
-1. Clone the repository:
+1. Clone this repository to your local environment.  
+2. Install project dependencies using the `requirements.txt` file.  
+3. Configure Reddit API credentials in a local configuration file.  
+4. Set up AWS services (S3, Redshift, IAM) and connect them through `boto3`.  
+5. Execute the Python ETL scripts to extract and load data.  
+6. Perform data transformations in dbt Cloud.  
+7. Connect Power BI to Redshift to create dashboards and explore data.
 
-```bash
-git clone https://github.com/GilbertWalker-DE/Reddit-API-Data-Pipeline.git
-```
-2.  Install dependencies:
+---
 
-```bash
-pip install -r requirements.txt
-```
+## Author
 
-3.  Configure Reddit API credentials:
+**Gilbert Walker**  
+Data Conversion Specialist transitioning into Data Engineering  
+📍 Bethlehem, GA  
+🔗 [GitHub Profile](https://github.com/GilbertWalker-DE)
 
-```bash
-# config.py
-CLIENT_ID = 'your_client_id'
-CLIENT_SECRET = 'your_client_secret'
-USERNAME = 'your_reddit_username'
-PASSWORD = 'your_password'
-USER_AGENT = 'your_user_agent'
-```
-
-4.  Configure AWS resources (S3, Redshift, IAM):
-
-```bash
-# Create S3 buckets
-aws s3 mb s3://reddit-raw-data
-aws s3 mb s3://reddit-processed-data
-
-# Set up Redshift cluster via AWS console or Terraform
-# Ensure IAM permissions allow read/write access
-```
-
-5.  Run ETL scripts:
-
-```bash
-python scripts/extract_reddit_data.py
-python scripts/transform_load.py
-```
-
-6.  Set up dbt models:
-
-```bash
-cd dbt/
-dbt run
-```
-
-7.  Use Airflow for workflow orchestration:
-
-```bash
-export AIRFLOW_HOME=~/airflow
-airflow db init
-airflow webserver -p 8080
-airflow scheduler
-```
-
-8.  Deploy infrastructure with Terraform:
-
-```bash
-cd terraform/
-terraform init
-terraform apply
-```
-
-9.  Connect Power BI to Redshift:
-
-```text
-# Use your Redshift cluster endpoint in Power BI
-# Begin creating dashboards or visualizations (currently in progress)
-```
+---
