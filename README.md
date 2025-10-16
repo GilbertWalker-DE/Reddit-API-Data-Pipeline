@@ -6,11 +6,12 @@
 
 ## Overview
 
-This project demonstrates a complete data pipeline for extracting, transforming, and loading data from Reddit using the Reddit API.  
-The dataset is stored in AWS Redshift and visualized in Power BI to analyze Reddit activity trends and insights.
+This project demonstrates a complete end-to-end data pipeline for extracting, transforming, and loading data from Reddit using the Reddit API.  
+The dataset is stored in AWS Redshift and visualized in Power BI to analyze Reddit activity trends and engagement insights.
 
-> **Note:** This project was inspired by [ABZ-Aaron’s Reddit API Pipeline tutorial](https://github.com/ABZ-Aaron/reddit-api-pipeline/tree/master/instructions).  
-> I followed the tutorial to build the pipeline while applying my own understanding and modifications where applicable.
+> **Note:** This was my **first data engineering project**.  
+> I followed [ABZ-Aaron’s Reddit API Pipeline tutorial](https://github.com/ABZ-Aaron/reddit-api-pipeline/tree/master/instructions) as a learning guide, implementing the walkthrough code and adapting it to deepen my understanding of ETL pipelines, AWS services, and data visualization.  
+> This was also my **first experience using Power BI**, where I successfully built and connected my own dashboard.
 
 ---
 
@@ -21,7 +22,7 @@ The dataset is stored in AWS Redshift and visualized in Power BI to analyze Redd
 - **AWS Services:**
   - **S3** – raw and processed data storage
   - **Redshift** – data warehouse for analytics
-  - **IAM** – for credential and access management
+  - **IAM** – credential and access management
 - **dbt Cloud** – for online SQL-based data transformations
 - **Airflow (Docker)** – for ETL orchestration and automation
 - **Power BI** – for visualization and reporting
@@ -37,27 +38,27 @@ The dataset is stored in AWS Redshift and visualized in Power BI to analyze Redd
 - AWS S3 integration for raw and processed data layers  
 - Data warehousing using Amazon Redshift  
 - Data transformation logic managed through **dbt Cloud**  
-- Airflow DAGs used to orchestrate the workflow in Docker  
+- Airflow DAGs orchestrating ETL workflows  
 - Power BI dashboard connected to Redshift for interactive analytics  
 
 ---
 
 ## Challenges & Learnings
 
-- Navigating Reddit API limitations and pagination handling  
-- Managing AWS IAM permissions for secure data access  
-- Debugging Airflow connection issues during Docker deployment  
-- Gaining hands-on experience with **dbt Cloud transformations**  
-- Connecting Power BI directly to Redshift for real-time analytics  
+- Handling Reddit API rate limits and pagination  
+- Managing AWS IAM permissions for secure S3 and Redshift access  
+- Debugging Airflow and Docker integration issues  
+- Learning **dbt Cloud** for SQL-based transformations  
+- Creating and connecting a Power BI dashboard for the first time  
 
 ---
 
 ## Next Steps
 
-- Continue refining Power BI visualizations and layout design  
-- Explore automation of ETL jobs through scheduled Airflow DAGs  
-- Integrate CI/CD practices for version-controlled dbt models  
-- Optimize AWS Redshift query performance and costs  
+- Refine and expand Power BI visualizations  
+- Automate ETL scheduling using Airflow  
+- Explore CI/CD automation for dbt model versioning  
+- Optimize AWS Redshift query performance  
 
 ---
 
