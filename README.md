@@ -32,6 +32,12 @@ The dataset is stored in AWS Redshift and visualized in Power BI to analyze Redd
 
 ---
 
+## 🗺️ Project Architecture Diagram
+
+![Reddit API Data Pipeline Project Diagram](images/WorkflowDiagram.png)
+
+---
+
 ## Features Implemented
 
 - Reddit API authentication and data extraction  
@@ -101,5 +107,3 @@ Example of the Airflow DAG orchestrating the ETL process:
 Data Conversion Specialist transitioning into Data Engineering  
 📍 Bethlehem, GA  
 🔗 [GitHub Profile](https://github.com/GilbertWalker-DE)
-
----
